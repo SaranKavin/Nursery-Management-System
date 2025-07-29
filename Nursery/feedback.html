@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nursery Shop</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5DC;
+            margin: 0;
+            padding: 0;
+        }
+            
+        .container {
+            width: 100%;
+            max-width: none;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .navigation a {
+      font-size: 20px;
+}
+
+        header {
+            background-color: #004225;
+            color: #FFF;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navigation ul li {
+            margin: 0 20px;
+        }
+
+        .navigation ul li a {
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        section p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        img.img-fluid {
+            max-width: 100%;
+            height: 400px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <img src="nursery_logo.png" alt="Nursery Shop Logo">
+        </div>
+        <nav class="navigation">
+            <ul class="menu">
+                <li><a href="nursery.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="aaaaaasubcategory.html">Products</a></li>
+                <li><a href="gift.html">Gifts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="logout.php">Logout</a></li>
+              
+        </nav>
+    </header>
+
+    <section id="feedback">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Your Feedback</h2>
+                    <p>We appreciate your feedback. Share your thoughts, suggestions, or concerns with us:</p>
+                   <form action="submit_feedback.php" method="POST">
+                    <form action="submit_feedback.php" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="num">Phone:</label>
+                            <input type="number" class="form-control" id="num" name="num" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comments">Your Feedback:</label>
+                            <textarea class="form-control" id="comments" name="comments" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nursery Plant Shop</p>
+    </footer>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

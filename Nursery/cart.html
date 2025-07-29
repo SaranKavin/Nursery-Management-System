@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shopping Cart</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price (per kg)</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Actions</th> <!-- New column for actions -->
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </tbody>
+        </table>
+        <div id="cartTotal"></div>
+        <button class="btn btn-primary mt-3" onclick="proceedToCheckout()">Proceed to Checkout</button> <!-- Proceed to Checkout button -->
+    </div>
+
+    <script>
+        // Fetch cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const cartItemsContainer = document.getElementById('cartItems');
+        const cartTotalContainer = document.getElementById('cartTotal');
+
+        // Function to render cart items
+        function renderCartItems() {
+            cartItemsContainer.innerHTML = ''; // Clear previous items
+            cartItems.forEach(item => {
+                const totalPrice = item.price * item.quantity;
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>₹${item.price}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹${totalPrice}</td>
+                    <td><button class="btn btn-danger" onclick="removeCartItem(${item.id})">Remove</button></td> <!-- Remove button -->
+                `;
+                cartItemsContainer.appendChild(row);
+            });
+
+            // Calculate and display total cart value
+            const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartTotalContainer.innerHTML = `<h3>Total: ₹${cartTotal}</h3>`;
+        }
+
+        // Call renderCartItems function initially to render items
+        renderCartItems();
+
+        // Function to handle proceeding to checkout
+        function proceedToCheckout() {
+            // Send cart data to server using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'save_cart.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Redirect to payment.html if data is successfully saved
+                    window.location.href = "payment.html";
+                }
+            };
+            xhr.send(JSON.stringify(cartItems));
+        }
+
+        // Function to remove a cart item
+        function removeCartItem(itemId) {
+            const index = cartItems.findIndex(item => item.id === itemId);
+            if (index !== -1) {
+                cartItems.splice(index, 1); // Remove item from cartItems array
+                localStorage.setItem('cart', JSON.stringify(cartItems)); // Update localStorage
+                renderCartItems(); // Re-render cart items
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

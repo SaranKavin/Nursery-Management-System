@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - CCTV Hub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Updated background gradient to include light blue, blue, neon blue, and white */
+        body {
+            background: linear-gradient(135deg, #add8e6 0%, #4b47ec 25%, #00bfff 50%, #ffffff 75%);
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        .admin-section, .items-section {
+            padding: 20px;
+        }
+
+        .card-background {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label, .items-section label {
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #4b47ec;
+            border-color: #4b47ec;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a36d1;
+            border-color: #3a36d1;
+        }
+
+        .btn-danger {
+            margin-left: 10px;
+        }
+
+        .item-entry {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="admin-section">
+        <div class="container">
+            <div class="card-background">
+                <h1>Admin Panel - Add New Item</h1>
+                <form id="addItemForm">
+                    <!-- Form inputs for adding new item -->
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="items-section">
+        <div class="container">
+            <div class="card-background">
+                <h2>Items List</h2>
+                <div id="itemsDisplay"></div>
+            </div>
+            <a href="admin.html"><button class="btn btn-primary">Add an item</button></a>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript for handling form submission and item addition
+
+        // Function to load and display items
+        function loadItems() {
+            const itemsDisplay = document.getElementById('itemsDisplay');
+            itemsDisplay.innerHTML = ''; // Clear current items
+
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                const itemData = JSON.parse(localStorage.getItem(key));
+
+                const itemEntry = document.createElement('div');
+                itemEntry.classList.add('item-entry');
+
+                itemEntry.innerHTML = `
+                    <label>${itemData.name} - $${itemData.price}</label>
+                    <button class="btn btn-danger delete-btn" data-item-name="${itemData.name}">Delete</button>
+                `;
+
+                itemsDisplay.appendChild(itemEntry);
+            }
+
+            // Add click event listeners to delete buttons
+            document.querySelectorAll('.delete-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemName = this.getAttribute('data-item-name');
+                    localStorage.removeItem(itemName); // Remove the item from local storage
+                    loadItems(); // Refresh the items display
+                });
+            });
+        }
+
+        document.getElementById('addItemForm').addEventListener('submit', function(event) {
+            // Form submission handling code
+
+            // After adding an item, reload the items display
+            loadItems();
+        });
+
+        // Initial load of items
+        loadItems();
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

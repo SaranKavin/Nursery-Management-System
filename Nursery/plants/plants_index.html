@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the navigation bar */
+        .navbar {
+            background-color: #f8f9fa; /* Background color */
+        }
+
+        .navbar-brand {
+            color: #343a40; /* Brand (text) color */
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            color: #343a40; /* Link (text) color */
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #0056b3; /* Link (text) color on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="plants_index.html">plants Products </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="plants_sales_report.php">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="plants_product.html">Prod add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../cart.html">Cart</a> <!-- Added link to cart -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to the Product Store</h1>
+        <div class="row" id="productContainer">
+            <!-- Product cards will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // Fetch and display products from the database
+        fetch("plants_fetch_products.php")
+            .then(response => response.json())
+            .then(products => {
+                const productContainer = document.getElementById("productContainer");
+
+                products.forEach(product => {
+                    const productCard = document.createElement("div");
+                    productCard.classList.add("col-md-4");
+
+                    productCard.innerHTML = `
+                        <div class="card mb-4 shadow-sm">
+                            <img src="${product.image_path}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body">
+                                <h5 class="card-title">${product.name}</h5>
+                                <p class="card-text">Price: ₹${product.price_per_kg}</p>
+                                <p class="card-text">Available Quantity: <span id="quantityDisplay${product.id}">${product.total_quantity}</span> kg</p>
+                                <div class="form-group">
+                                    <label for="quantity${product.id}">Quantity:</label>
+                                    <input type="number" class="form-control" id="quantity${product.id}" min="1" max="${product.total_quantity}" value="1">
+                                </div>
+                                <button class="btn btn-primary mr-2" onclick="buyProduct(${product.id}, '${product.name}')">Buy</button> <!-- Buy button -->
+                                <button class="btn btn-success" onclick="addToCart(${product.id}, '${product.name}', ${product.price_per_kg})">Add to Cart</button> <!-- Add to Cart button -->
+                            </div>
+                        </div>
+                    `;
+
+                    productContainer.appendChild(productCard);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+
+        // Function to handle product purchase
+        function buyProduct(productId, productName) {
+            const quantityInput = document.getElementById(`quantity${productId}`);
+            const quantity = parseInt(quantityInput.value);
+            const availableQuantityDisplay = document.getElementById(`quantityDisplay${productId}`);
+            let availableQuantity = parseInt(availableQuantityDisplay.innerText);
+
+            if (quantity <= availableQuantity) {
+                availableQuantity -= quantity;
+                availableQuantityDisplay.innerText = availableQuantity;
+
+                // Send a request to the server to handle the purchase
+                fetch(`plants_purchase_product.php?id=${productId}&quantity=${quantity}`)
+                    .then(response => {
+                        if (response.ok) {
+                            alert(`You have purchased ${quantity} ${productName}(s)`);
+                            location.reload(); // Reload the page to reflect the updated quantity
+                        } else {
+                            alert(`Failed to purchase ${productName}`);
+                        }
+                    })
+                    .catch(error => console.error('Error purchasing product:', error));
+            } else {
+                alert(`Insufficient quantity available for ${productName}`);
+            }
+        }
+
+        // Function to add product to cart
+        function addToCart(productId, productName, productPrice) {
+            const quantityInput = document.getElementById(`quantity${productId}`);
+            const quantity = parseInt(quantityInput.value);
+
+            // Retrieve cart from localStorage or initialize empty cart
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add item to cart
+            cart.push({
+                id: productId,
+                name: productName,
+                price: productPrice,
+                quantity: quantity
+            });
+
+            // Store updated cart in localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            alert(`Added ${quantity} ${productName}(s) to cart.`);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

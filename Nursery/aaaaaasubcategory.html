@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Open New Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            background-color: #f0f0f0;
+        }
+
+        .image-container {
+            cursor: pointer;
+            margin: 30px;
+            width: 200px; /* Set the width of the container */
+            height: 180px; /* Set the height of the container */
+            overflow: hidden; /* Hide overflowing image */
+            position: relative; /* Enable positioning of text */
+        }
+
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .image-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #004225;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+
+        /* Navigation Styles */
+        header {
+            background-color: #004225;
+            color: #FFF;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navigation ul li {
+            margin: 0 20px;
+        }
+
+        .navigation ul li a {
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navigation ul li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="nursery_logo.png" alt="">
+        </div>
+        <nav class="navigation">
+            <ul class="menu">
+                <li><a href="nursery.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="aaaaaasubcategory.html">Products</a></li>
+                <li><a href="gift.html">Gifts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="image-container" onclick="openNewPage('plants/plants_index.html')">
+        <img src="pla1.jpg" alt="Click Me">
+        <div class="image-name">Plants</div>
+    </div>
+
+    <div class="image-container" onclick="openNewPage('seed/seed_index.html')">
+        <img src="see4.jpg" alt="Click Me">
+        <div class="image-name">Seeds</div>
+    </div>
+
+    <!-- Add similar blocks for the remaining images -->
+    <!-- image3 -->
+    <div class="image-container" onclick="openNewPage('trees/trees_index.html')">
+        <img src="tree1.jpg" alt="Click Me">
+        <div class="image-name">Trees</div>
+    </div>
+
+    <!-- image4 
+    <div class="image-container" onclick="openNewPage('page4.html')">
+        <img src="spice1.jpg" alt="Click Me">
+        <div class="image-name">ONION</div>
+    </div>-->
+
+    <!-- image5 
+    <div class="image-container" onclick="openNewPage('page5.html')">
+        <img src="spice.jpg" alt="Click Me">
+        <div class="image-name">SPICE</div>
+    </div>-->
+    
+    <script>
+        function openNewPage(page) {
+            window.open(page, "_blank");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  h1 {
+      text-align: center;
+  }
+  
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .navigation a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+  }
+  
+  .navigation ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+  }
+  
+  .navigation li {
+      margin: 0 20px;
+  }
+  
+  .navigation a {
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+  }
+  
+  .logo img {
+    max-width: 150px;
+  }
+  
+  .description {
+    width: 600px;
+    height: 600px;
+  }
+  
+  .description img {
+    max-width: 100%;
+  }
+  
+  .categories {
+    margin-top: 50px;
+  }
+  
+  .categories ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .categories li {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    color: #333;
+    margin-right: 10px;
+  }
+  
+  .categories li.active {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+  
+  .item {
+    width: calc(25% - 20px);
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .item img {
+    max-width: 100%;
+  }
+  
+  .item h3 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  
+  .item p.price {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* CSS */
+  
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  .menu li:last-child {
+    margin-right: 0;
+  }
+  
+  .image-container {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .image-container img {
+    width: 35%;
+    height: 300px;
+    margin-right: 1rem;
+  }
+  
+  .image-container img:last-child {
+    margin-right: 0;
+  }
+  .footer-container {
+    background-color: #f5f5f5;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .footer-container > div {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .footer-container h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  .footer-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footer-container li {
+    margin: 0 1.5rem;
+  }
+  
+  .footer-container p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+  }
+  
+  .footer-container a {
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-container a:hover {
+    color: #f39c12;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .footer-container {
+      padding: 50px;
+      text-align: left;
+    }
+  
+    .footer-container > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+  
+    .footer-container h3 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .footer-container p {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .footer-container p:last-child {
+      margin-bottom: 0;
+    }
+  
+    .footer-container .contact-info {
+      margin-right: 50px;
+    }
+  
+    .footer-container ul {
+      justify-content: flex-start;
+    }
+  
+    .footer-container li {
+      margin: 0 1rem;
+    }
+  }
+  
+  .branches-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+  }
+  
+  .branch {
+    width: calc(33.33% - 20px);
+    margin-bottom: 40px;
+  }
+  
+  .branch img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  
+  .branch p {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.5;
+  }

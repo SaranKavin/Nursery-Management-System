@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nursery Shop</title>
+    <link rel="stylesheet" href="style.css">
+        <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5DC;
+            margin: 10px;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: none;
+            background-color: #FFF;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #004225;
+            color: #FFF;
+            padding: 20px 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        .navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navigation ul li {
+            margin: 0 20px;
+        }
+
+        .navigation ul li a {
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navigation a {
+      font-size: 20px;
+}
+
+        .navigation ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+
+        form label {
+            font-weight: bold;
+        }
+
+        section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        section p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        img.img-fluid {
+            max-width: 100%;
+            height: 400px;
+        }
+
+        .banner {
+            position: relative;
+            overflow: hidden;
+            image-rendering: optimizeQuality;
+            image-orientation: from-image;
+            width: 100%;
+            height: auto;
+        }
+
+        #heading {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #00b894, #0984e3); /* Gradient background */
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        #slogan {
+            position: absolute;
+            top: 54%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5em;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background-color: #ff7675; /* Stylish background color */
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 900px;
+        }
+
+        .categories ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .categories ul li {
+            display: inline;
+            margin-right: 20px;
+            cursor: pointer;
+            color: #004225;
+        }
+
+        .categories ul li.active {
+            font-weight: bold;
+        }
+
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .item {
+            width: 30%;
+            margin-bottom: 20px;
+            background-color: #FFF;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: 300px;
+        }
+
+        .item h3 {
+            margin: 10px 0;
+            color: #004225;
+        }
+
+        .item .price {
+            color: #FFB000;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #004225;
+            color: #FFF;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 50%;
+            margin: 0 auto;
+        }
+
+        /* Cart and Proceed to Payment Styles */
+        .cart {
+            background-color: #004225;
+            color: #FFF;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .cart-button {
+            background-color: #FFB000;
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .proceed-to-payment {
+            background-color: #507062;
+            color: #FFF;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <img src="nursery_logo.png" alt="Nursery Shop Logo">
+            
+        </div>
+        <nav class="navigation">
+            <ul class="menu">
+                <li><a href="nursery.html">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="aaaaaasubcategory.html">Products</a></li>
+                <li><a href="gift.html">Gifts</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="logout.php">Logout</a></li>
+               <!-- <li><a href="aaaaaasubcategory.html">product</a></li>-->
+         
+            </ul>
+        </nav>
+    </header>
+    <div class="banner">
+        
+        <img src="banner_image.png" alt="Banner Image">
+        <h1 id="heading">E-GROWTH  SOLUTION</h1>
+        <p id="slogan">Grow the future, nuture the present</p>
+        
+    </div>
+    <main>
+      <!--  <div class="categories">
+            <ul>
+                <li class="active" data-category="all">All</li>
+                <li data-category="plants">Plants</li>
+                <li data-category="seeds">Seeds</li>
+                <li data-category="trees">Trees</li>
+            </ul>
+        </div>
+        <div class="items">
+         Plants -->
+          <!--  <div class="item" data-category="plants">
+                <img src="plant1.jpg" alt="Orchid Delight">
+                <h3>Orchid Delight</h3>
+                <p class="price">₹20.00</p>
+                <input type="number" id="plant1-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="plant 1" data-price="20.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="plants">
+                <img src="plant2.jpg" alt="Fern Fantasy">
+                <h3>Fern Fantasy</h3>
+                <p class="price">₹18.00</p>
+                <input type="number" id="plant2-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="plant 2" data-price="18.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="plants">
+                <img src="plant3.jpg" alt="Lily of the Valley">
+                <h3>Lily of the Valley</h3>
+                <p class="price">₹25.00</p>
+                <input type="number" id="plant3-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="plant 3" data-price="25.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="plants">
+                <img src="plant4.jpg" alt="Golden Pothos">
+                <h3>Golden Pothos</h3>
+                <p class="price">₹22.00</p>
+                <input type="number" id="plant4-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="plant 4" data-price="22.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="plants">
+                <img src="plant5.jpg" alt="Scarlet Begonia">
+                <h3>Scarlet Begonia</h3>
+                <p class="price">₹30.00</p>
+                <input type="number" id="plant5-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="plant 5" data-price="30.00">Add to Cart</button>
+            </div>-->
+        
+            <!-- Seeds -->
+          <!--  <div class="item" data-category="seeds">
+                <img src="seed1.jpg" alt="Sunflower Radiance">
+                <h3>Sunflower Radiance</h3>
+                <p class="price">₹5.00</p>
+                <input type="number" id="seed1-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="seed 1" data-price="5.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="seeds">
+                <img src="seed2.jpg" alt="Basil Bliss">
+                <h3>Basil Bliss</h3>
+                <p class="price">₹4.00</p>
+                <input type="number" id="seed2-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="seed 2" data-price="4.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="seeds">
+                <img src="seed3.jpg" alt="Wildflower Wonderland">
+                <h3>Wildflower Wonderland</h3>
+                <p class="price">₹6.00</p>
+                <input type="number" id="seed3-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="seed 3" data-price="6.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="seeds">
+                <img src="seed4.jpg" alt="Tomato Tango">
+                <h3>Tomato Tango</h3>
+                <p class="price">₹3.00</p>
+                <input type="number" id="seed4-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="seed 4" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="seeds">
+                <img src="seed5.jpg" alt="Pumpkin Spice">
+                <h3>Pumpkin Spice</h3>
+                <p class="price">₹7.00</p>
+                <input type="number" id="seed5-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="seed 5" data-price="7.00">Add to Cart</button>
+            </div>-->
+        
+            <!-- Trees -->
+            <!-- <div class="item" data-category="trees">
+                <img src="tree1.jpg" alt="Majestic Oak">
+                <h3>Majestic Oak</h3>
+                <p class="price">₹50.00</p>
+                <input type="number" id="tree1-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="tree 1" data-price="50.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="trees">
+                <img src="tree2.jpg" alt="Royal Maple">
+                <h3>Royal Maple</h3>
+                <p class="price">₹45.00</p>
+                <input type="number" id="tree2-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="tree 2" data-price="45.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="trees">
+                <img src="tree3.jpg" alt="Evergreen Pine">
+                <h3>Evergreen Pine</h3>
+                <p class="price">₹60.00</p>
+                <input type="number" id="tree3-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="tree 3" data-price="60.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="trees">
+                <img src="tree4.jpg" alt="Willow Whisper">
+                <h3>Willow Whisper</h3>
+                <p class="price">₹55.00</p>
+                <input type="number" id="tree4-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="tree 4" data-price="55.00">Add to Cart</button>
+            </div>
+            <div class="item" data-category="trees">
+                <img src="tree5.jpg" alt="Redwood Majesty">
+                <h3>Redwood Majesty</h3>
+                <p class="price">₹70.00</p>
+                <input type="number" id="tree5-quantity" placeholder="Quantity">
+                <button class="add-to-cart" data-item="tree 5" data-price="70.00">Add to Cart</button>
+            </div>
+        </div>-->
+        
+<!-- Cart Section -->
+<!--<div class="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-total">
+        <p>Total Amount:</p>
+        <span id="cart-total-amount">₹0.00</span>
+    </div>
+    <button class="proceed-to-payment">Proceed to Payment</button>
+</div>-->
+    </main>
+    <footer>
+        <div class="">
+            <div>
+                <p><strong>Contact Info:</strong>187 Ramkribha Complex, 9th Main Road, Ram Nagar Madipakkam, Chennai:600091
+                </p>
+                <b> <p>Phone: </b>+91 9342114973</p>
+                <b> <p>Email:</b>egrowthsolution123@gmail.com 
+            </div>
+        </div>
+    </footer>
+</div>
+<script>
+// Cart data structure
+const cart = [];
+
+// Function to add an item to the cart
+function addToCart(itemName, itemPrice) {
+    const quantityInput = document.querySelector(`#${itemName.replace(/ /g, "").toLowerCase()}-quantity`);
+    const quantity = quantityInput.value;
+
+    if (quantity > 0) {
+        const totalItemPrice = (itemPrice * quantity).toFixed(2);
+        const newItem = {
+            name: itemName,
+            quantity: quantity,
+            price: itemPrice,
+            total: `₹${totalItemPrice}`,
+        };
+
+        cart.push(newItem);
+
+        // Update the cart display
+        displayCart();
+    }
+}
+
+// Function to remove an item from the cart
+function removeFromCart(itemName) {
+    const itemIndex = cart.findIndex(item => item.name === itemName);
+
+    if (itemIndex !== -1) {
+        cart.splice(itemIndex, 1);
+    }
+
+    // Update the cart display
+    displayCart();
+}
+
+// Function to display the cart
+function displayCart() {
+    const cartItemsElement = document.getElementById('cart-items');
+    cartItemsElement.innerHTML = '';
+
+    let totalAmount = 0;
+
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        const cartItemName = document.createElement('div');
+        cartItemName.classList.add('cart-item-name');
+        cartItemName.textContent = `${item.name} (${item.quantity} x ₹${item.price})`;
+
+        const cartItemPrice = document.createElement('div');
+        cartItemPrice.classList.add('cart-item-price');
+        cartItemPrice.textContent = item.total;
+
+        const cartRemoveButton = document.createElement('button');
+        cartRemoveButton.classList.add('cart-remove-button');
+        cartRemoveButton.textContent = 'Remove';
+        cartRemoveButton.addEventListener('click', () => {
+            removeFromCart(item.name);
+        });
+
+        cartItem.appendChild(cartItemName);
+        cartItem.appendChild(cartItemPrice);
+        cartItem.appendChild(cartRemoveButton);
+
+        cartItemsElement.appendChild(cartItem);
+
+        // Calculate the total amount
+        totalAmount += parseFloat(item.price) * item.quantity;
+    });
+
+    // Update the total amount
+    const cartTotalAmount = document.getElementById('cart-total-amount');
+    cartTotalAmount.textContent = `₹${totalAmount.toFixed(2)}`;
+}
+
+// Add a click event listener to the "Add to Cart" buttons
+const addToCartButtons = document.querySelectorAll('.add-to-cart');
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const itemName = button.getAttribute('data-item');
+        const itemPrice = parseFloat(button.getAttribute('data-price'));
+        addToCart(itemName, itemPrice);
+    });
+});
+
+// Add a click event listener to the "Proceed to Payment" button
+const proceedToPaymentButton = document.querySelector('.proceed-to-payment');
+proceedToPaymentButton.addEventListener('click', () => {
+    // You can implement the checkout functionality here
+    // For now, let's just clear the cart
+    cart.length = 0;
+
+    // Update the cart display
+    displayCart();
+
+    // Redirect the user to payment.html
+    window.location.href = 'payment.html';
+});
+
+// Get the category list items and the items container
+const categoryItems = document.querySelectorAll('.categories li');
+const itemsContainer = document.querySelector('.items');
+
+// Add a click event listener to each category item
+categoryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Remove the "active" class from all category items
+    categoryItems.forEach(item => {
+      item.classList.remove('active');
+    });
+// Add the "active" class to the clicked category item
+    item.classList.add('active');
+
+    // Get the selected category
+    const selectedCategory = item.getAttribute('data-category');
+
+    // If the selected category is "all", show all items
+    if (selectedCategory === 'all') {
+      itemsContainer.querySelectorAll('.item').forEach(item => {
+        item.style.display = 'block';
+      });
+    } else {
+      // Otherwise, show only the items that belong to the selected category
+      itemsContainer.querySelectorAll('.item').forEach(item => {
+        if (item.getAttribute('data-category') === selectedCategory) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  });
+});
+</script>
+</body>
+</html>

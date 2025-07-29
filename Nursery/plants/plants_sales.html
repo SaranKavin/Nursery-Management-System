@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sales Report</h1>
+        <div id="salesReport"></div>
+    </div>
+
+    <script>
+        // Fetch sales report data from the server
+        fetch("plants_sales_report.php")
+            .then(response => response.json())
+            .then(salesReport => {
+                const salesReportContainer = document.getElementById("salesReport");
+
+                // Create a table to display the sales report
+                const table = document.createElement("table");
+                table.classList.add("table", "table-striped");
+
+                // Create table headers
+                const headers = ["Product Name", "Quantity Sold", "Total Price"];
+                const headerRow = document.createElement("tr");
+                headers.forEach(headerText => {
+                    const th = document.createElement("th");
+                    th.textContent = headerText;
+                    headerRow.appendChild(th);
+                });
+                table.appendChild(headerRow);
+
+                // Create table rows for each sales report entry
+                salesReport.forEach(report => {
+                    const row = document.createElement("tr");
+                    Object.values(report).forEach(value => {
+                        const cell = document.createElement("td");
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    });
+                    table.appendChild(row);
+                });
+
+                // Append the table to the sales report container
+                salesReportContainer.appendChild(table);
+            })
+            .catch(error => console.error('Error fetching sales report:', error));
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.5/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
